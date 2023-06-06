@@ -16,6 +16,7 @@ const api_url = 'https://nominatim.openstreetmap.org/search?';
 
 export default function Search({setSelectPosition}) {
   const [searchText, setSearchText] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
 
   const queryClient = useQueryClient();
 
@@ -57,6 +58,7 @@ export default function Search({setSelectPosition}) {
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
+            setIsTyping(e.target.value !== '')
           }}
         />
         <InputRightElement width="4.5rem">
@@ -72,7 +74,7 @@ export default function Search({setSelectPosition}) {
         </InputRightElement>
       </InputGroup>
       <List spacing={3}>
-        {isLoading ? (
+        {isTyping && isLoading ? (
           <div>Loading...</div>
         ) : isError ? (
           <div>Error occurred while fetching data.</div>
