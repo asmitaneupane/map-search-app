@@ -10,7 +10,7 @@ import {
   Divider,
 } from '@chakra-ui/react';
 import { MdLocationOn } from 'react-icons/md';
-import { useQueryClient, useQuery } from 'react-query';
+import { useQueryClient, useQuery } from '@tanstack/react-query';
 
 const api_url = 'https://nominatim.openstreetmap.org/search?';
 
