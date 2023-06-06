@@ -35,7 +35,7 @@ export default function GetMap({ selectPosition }) {
   return (
     <MapContainer
       center={position}
-      zoom={8}
+      zoom={13}
       style={{ width: "100%", height: "100%" }}
       scrollWheelZoom={false}
     >
@@ -44,9 +44,10 @@ export default function GetMap({ selectPosition }) {
         url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=2SvZWDO7gjDWzsnbdf7C"
       />
       {selectPosition && (
-        <Marker position={locationSelection} icon={icon}>
+        <Marker
+         position={locationSelection} icon={icon}>
           <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
+            Marker
           </Popup>
         </Marker>
       )}
