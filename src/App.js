@@ -3,7 +3,8 @@ import GetMap from "./GetMap";
 import Search from "./Search";
 
 function App() {
-  const [selectPosition, setSelectPosition] = useState(null);
+  const position = {lat: '51.505', lon:'-0.09'};
+  const [selectPosition, setSelectPosition] = useState(position);
   console.log(selectPosition);
 
   return (

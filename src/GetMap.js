@@ -8,24 +8,22 @@ const icon = L.icon({
   iconSize: [38, 38],
 });
 
-const position = [51.505, -0.09];
+function ResetCenterView({ selectPosition }) {
+  const map = useMap();
 
-function ResetCenterView({selectPosition}) {
-    const map = useMap();
-
-    useEffect(()=> {
-        if(selectPosition) {
-            map.setView(
-                L.latLng(selectPosition.lat, selectPosition.lon),
-                map.getZoom(),
-                {
-                    animate: true
-                }
-            )
+  useEffect(() => {
+    if (selectPosition) {
+      map.setView(
+        L.latLng(selectPosition.lat, selectPosition.lon),
+        map.getZoom(),
+        {
+          animate: true,
         }
-    },[selectPosition]);
-    
-    return null;
+      );
+    }
+  }, [selectPosition]);
+
+  return null;
 }
 
 export default function GetMap({ selectPosition }) {
@@ -34,7 +32,7 @@ export default function GetMap({ selectPosition }) {
 
   return (
     <MapContainer
-      center={position}
+      center={selectPosition}
       zoom={8}
       style={{ width: "100%", height: "100%" }}
       scrollWheelZoom={false}
@@ -44,11 +42,8 @@ export default function GetMap({ selectPosition }) {
         url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=2SvZWDO7gjDWzsnbdf7C"
       />
       {selectPosition && (
-        <Marker
-         position={locationSelection} icon={icon}>
-          <Popup>
-            Marker
-          </Popup>
+        <Marker position={locationSelection} icon={icon}>
+          <Popup>Marker</Popup>
         </Marker>
       )}
       <ResetCenterView selectPosition={selectPosition} />
